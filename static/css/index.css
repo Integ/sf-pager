@@ -1,0 +1,141 @@
+@charset "utf-8";
+html {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, STHeiti, "Microsoft Yahei", sans-serif;
+}
+* {
+  margin: 0;
+}
+nav {
+  background-color: #F3F3F3;
+  padding: 15px;
+}
+nav h4 {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.author * {
+  display: inline-block;
+  font-size: 13px;
+  margin: 0 3px;
+}
+.author .name {
+  color: #009a61;
+  margin-left: 0;
+}
+.author .rank {
+  font-weight: 700;
+}
+.info {
+  color: #999999;
+}
+.content-container {
+  padding: 18px;
+  font-size: 15px;
+}
+.content,
+.comment {
+  word-break: break-all;
+}
+.content p,
+.comment p {
+  margin: 10px 0;
+}
+.content p:first-child,
+.comment p:first-child {
+  margin-top: 0;
+}
+.tags a {
+  padding: 0 5px;
+  font-size: 12px;
+  background-color: #E7F2ED;
+  display: inline-block;
+  color: #017E66;
+}
+.btn-box {
+  margin-top: 10px;
+}
+.btn-box a {
+  vertical-align: middle;
+  display: inline-block;
+  padding: 0 5px;
+  background-color: #F3F3F3;
+  color: #999999;
+  font-size: 13px;
+  text-decoration: none;
+}
+i + span {
+  margin-left: 5px;
+}
+i {
+  vertical-align: middle;
+}
+i.vote-up {
+  height: 0;
+  width: 0;
+  display: inline-block;
+  border-top: solid 4px #999999;
+  border-left: solid 4px #999999;
+  border-right: solid 4px transparent;
+  border-bottom: solid 4px transparent;
+  -webkit-transform: translateY(3px) rotate(45deg);
+}
+i.vote-down {
+  height: 0;
+  width: 0;
+  display: inline-block;
+  border-top: solid 4px #999999;
+  border-left: solid 4px #999999;
+  border-right: solid 4px transparent;
+  border-bottom: solid 4px transparent;
+  -webkit-transform: translateY(-3px) rotate(225deg);
+}
+i.ic-accepted {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  background: url("../images/accepted.png");
+  background-size: 17px auto;
+}
+.tags * {
+  margin: 0 3px;
+}
+.comments {
+  vertical-align: middle;
+  display: inline-block;
+  margin-left: 10px;
+}
+.ic-comment {
+  display: inline-block;
+  width: 11px;
+  height: 10px;
+  background: url("../images/comment.png");
+  background-size: 11px auto;
+}
+.btn-box {
+  line-height: 22px;
+}
+.btn-box * {
+  margin: 0 3px;
+}
+.comment {
+  padding: 18px;
+  border-top: 1px solid #999;
+}
+.comment:first-child {
+  border-top: none;
+}
+.comment .content {
+  font-size: 13px;
+  margin: 7px 0;
+}
+.accepted {
+  margin-top: 10px;
+  color: #009a61;
+  font-size: 12px;
+}
+.block {
+  display: block;
+}
+.hidden {
+  display: none;
+}
