@@ -13,8 +13,7 @@ var Answer = React.createClass({
                         <div className="info">·</div>
                         <div className="info">刚刚</div>
                     </div>
-                    <div className="content">
-                        {this.props.content}
+                    <div className="content" dangerouslySetInnerHTML={{__html: this.props.content}} >
                     </div>
                     <div className={"accepted " + accepted}><i className="ic-accepted"></i><span>该答案已经被采纳</span></div>
 
@@ -82,7 +81,7 @@ var Question = React.createClass({
 
         if (this.state.accepted) {
             var accepted = this.state.accepted;
-            acceptedAnswer = <Answer content={accepted.content} votes={accepted.votes} comments={accepted.comments} accepted="true" />;
+            acceptedAnswer = <Answer content={accepted.parsedText} votes={accepted.votes} comments={accepted.comments} accepted="true" />;
         }
 
         return (
@@ -113,6 +112,7 @@ var Question = React.createClass({
                       <a href="javascript:void(0)" style={{float: "right"}}><i className="ic-comment"></i>{ this.state.comments }</a>
                   </div>
               </div>
+              {acceptedAnswer}
           </div>
         );
     }
