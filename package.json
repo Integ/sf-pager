@@ -8,9 +8,10 @@
   },
   "author": "Gemini",
   "license": "MIT",
-  "repo": "git@github.com:coffeesherk/sf-pager.git",
+  "repository": "git@github.com:coffeesherk/sf-pager.git",
   "devDependencies": {
     "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
     "gulp-less": "^3.0.2",
     "gulp-react": "^3.0.1",
     "gulp-rename": "^1.2.2",
