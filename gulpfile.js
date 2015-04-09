@@ -10,7 +10,10 @@ gulp.task("watch", function () {
     gulp.src("static/less/**/*.less")
         .pipe(watch("static/less/**/*.less"))
         .pipe(less())
-        .pipe(gulp.dest("static/css"));
+        .pipe(gulp.dest("static/css"))
+        .on('error', function (err) {
+            console.log(err);
+        });
 
     gulp.src("static/javascript/src/**/*.jsx")
         .pipe(watch("static/javascript/src/**/*.jsx"))
@@ -26,9 +29,9 @@ gulp.task("watch", function () {
 });
 
 gulp.task("concat", function() {
-    gulp.src(['static/javascript/dist/answer-react.min.js',
-              'static/javascript/dist/question-react.min.js',
-              'static/javascript/dist/question.min.js'])
+    gulp.src(['static/javascript/dist/question/answer-react.min.js',
+              'static/javascript/dist/question/question-react.min.js',
+              'static/javascript/dist/question/question.min.js'])
         .pipe(concat("question-all.min.js"))
-        .pipe(gulp.dest("static/javascript/dist"));
+        .pipe(gulp.dest("static/javascript/dist/question"));
 });
