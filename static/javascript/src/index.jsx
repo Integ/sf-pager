@@ -5,26 +5,23 @@ var Answer = React.createClass({
         var accepted = this.props.accepted == "true" ? 'block' :'hidden';
 
         return (
-            <div>
-                <div className="comment">
-                    <div className="author">
-                        <div className="name">Author</div>
-                        <div className="rank">0</div>
-                        <div className="info">·</div>
-                        <div className="info">刚刚</div>
-                    </div>
-                    <div className="content" dangerouslySetInnerHTML={{__html: this.props.content}} >
-                    </div>
-                    <div className={"accepted " + accepted}><i className="ic-accepted"></i><span>该答案已经被采纳</span></div>
-
-                    <div className="btn-box">
-                        <a href="javascript:void(0)"><i className="vote-up" style={{"margin": "0 7px 0 3px"}}></i><span>有用</span></a>
-                        <a href="javascript:void(0)"><i className="vote-down" style={{"margin": "0 3px"}}></i></a>
-                        <span className="comments"> {this.props.votes} </span>
-                        <a href="javascript:void(0)" style={{"float": "right"}}><i className="ic-comment"></i>{this.props.comments}</a>
-                    </div>
+            <div className="comment">
+                <div className="author">
+                    <div className="name">{this.props.author.name}</div>
+                    <div className="rank">{this.props.author.rank}</div>
+                    <div className="info">·</div>
+                    <div className="info">{this.props.createdDate}</div>
                 </div>
+                <div className="content" dangerouslySetInnerHTML={{__html: this.props.content}} >
+                </div>
+                <div className={"accepted " + accepted}><i className="ic-accepted"></i><span>该答案已经被采纳</span></div>
 
+                <div className="btn-box">
+                    <a href="javascript:void(0)"><i className="vote-up" style={{"margin": "0 7px 0 3px"}}></i><span>有用</span></a>
+                    <a href="javascript:void(0)"><i className="vote-down" style={{"margin": "0 3px"}}></i></a>
+                    <span className="comments"> {this.props.votes} </span>
+                    <a href="javascript:void(0)" style={{"float": "right"}}><i className="ic-comment"></i>{this.props.comments}</a>
+                </div>
             </div>
         );
     }
@@ -81,7 +78,12 @@ var Question = React.createClass({
 
         if (this.state.accepted) {
             var accepted = this.state.accepted;
-            acceptedAnswer = <Answer content={accepted.parsedText} votes={accepted.votes} comments={accepted.comments} accepted="true" />;
+            acceptedAnswer = <Answer content={accepted.parsedText}
+                                     votes={accepted.votes}
+                                     comments={accepted.comments}
+                                     author={accepted.author}
+                                     createdDate={accepted.createdDate}
+                                     accepted="true" />;
         }
 
         return (
@@ -98,8 +100,8 @@ var Question = React.createClass({
                   </div>
               </nav>
               <div className="content-container">
-                  <div className="content" dangerouslySetInnerHTML={{__html: this.state.content}}>
-                  </div>
+                  <article className="content" dangerouslySetInnerHTML={{__html: this.state.content}}>
+                  </article>
                   <div className="tags">
                       {this.state.tags.map(function (tag){
                           return <a>{tag.name}</a>;
@@ -113,6 +115,14 @@ var Question = React.createClass({
                   </div>
               </div>
               {acceptedAnswer}
+              {this.state.answers.map(function (answer) {
+                      return <Answer content={answer.parsedText}
+                                     votes={answer.votes}
+                                     comments={answer.comments}
+                                     author={answer.author}
+                                     createdDate={answer.createdDate}
+                                     accepted="false" />;
+              })}
           </div>
         );
     }

@@ -16,5 +16,8 @@ gulp.task("watch", function () {
         .pipe(rename({
             "extname": ".js"
         }))
-        .pipe(gulp.dest("static/javascript/dist"));
+        .pipe(gulp.dest("static/javascript/dist"))
+        .on('error', function (err) {
+            console.log(err);
+        });
 });
