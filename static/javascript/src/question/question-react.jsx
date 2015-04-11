@@ -1,6 +1,7 @@
 var Question = React.createClass({
     getInitialState: function () {
         return {
+            "id": -1,
             "title": "加载中...",
             "content": "加载中...",
             "author": {
@@ -15,9 +16,24 @@ var Question = React.createClass({
             "comments": 0
         }
     },
+    handleRankUp: function () {
+        var id = this.state.id;
+        if(id == -1) {
+            return;
+        }
+        alert(id);
+    },
+    handleRankDown: function () {
+        var id = this.state.id;
+        if(id == -1) {
+            return;
+        }
+        alert(id);
+    },
     componentDidMount: function () {
         window.showQuestion = function (data) {
             this.setState({
+                "id": data.id,
                 "title": data.title,
                 "content": data.parsedText,
                 "author": {
@@ -48,7 +64,8 @@ var Question = React.createClass({
 
         if (this.state.accepted) {
             var accepted = this.state.accepted;
-            acceptedAnswer = <Answer content={accepted.parsedText}
+            acceptedAnswer = <Answer id={accepted.id}
+                                     content={accepted.parsedText}
                                      votes={accepted.votes}
                                      comments={accepted.comments}
                                      author={accepted.author}
@@ -78,15 +95,16 @@ var Question = React.createClass({
                         })}
                     </div>
                     <div className="btn-box">
-                        <a href="javascript:void(0)"><i className="vote-up" style={{margin: "0 7px 0 3px"}}></i><span>有用</span></a>
-                        <a href="javascript:void(0)"><i className="vote-down" style={{margin: "0 3px"}}></i></a>
+                        <a href="javascript:void(0)" onClick={this.handleRankUp}><i className="vote-up" style={{margin: "0 7px 0 3px"}}></i><span>有用</span></a>
+                        <a href="javascript:void(0)" onClick={this.handleRankDown}><i className="vote-down" style={{margin: "0 3px"}}></i></a>
                         <span className="comments"> {this.state.votes} </span>
                         <a href="javascript:void(0)" style={{float: "right"}}><i className="ic-comment"></i>{ this.state.comments }</a>
                     </div>
                 </div>
                 {acceptedAnswer}
                 {this.state.answers.map(function (answer) {
-                    return <Answer content={answer.parsedText}
+                    return <Answer id={answer.id}
+                                   content={answer.parsedText}
                                    votes={answer.votes}
                                    comments={answer.comments}
                                    author={answer.author}
