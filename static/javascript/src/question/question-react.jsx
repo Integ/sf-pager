@@ -10,7 +10,7 @@ var Question = React.createClass({
             },
             "votes": 0,
             "createdDate": "刚刚",
-            "tags": [],
+            "tags": [{"id":"123", "name":"123"}],
             "accepted": undefined,
             "answers": [],
             "comments": 0
@@ -91,7 +91,7 @@ var Question = React.createClass({
                     </article>
                     <div className="tags">
                         {this.state.tags.map(function (tag){
-                            return <a>{tag.name}</a>;
+                            return <Tag name={tag.name} id={tag.id} />
                         })}
                     </div>
                     <div className="btn-box">

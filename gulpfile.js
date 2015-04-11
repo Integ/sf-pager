@@ -30,6 +30,7 @@ gulp.task("watch", function () {
 
 gulp.task("concat", function() {
     gulp.src(['static/javascript/dist/question/answer-react.min.js',
+              'static/javascript/dist/question/tag-react.min.js',
               'static/javascript/dist/question/question-react.min.js',
               'static/javascript/dist/question/question.min.js'])
         .pipe(concat("question-all.min.js"))
