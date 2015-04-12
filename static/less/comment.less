@@ -1,2 +1,57 @@
 @charset "utf-8";
 
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  li {
+    padding: 10px;
+    img {
+      width: 32px;
+      height: 32px;
+      float: left;
+      border-radius: 9999px;
+    }
+    div.content {
+      margin-left: 40px;
+    }
+    &::after {
+      content: '';
+      display:block;
+      clear: both;
+    }
+    border-bottom: 1px solid #C8C7CC;
+  }
+}
+
+.author {
+  span {
+    margin: 0 2px;
+  }
+  .no {
+    color: #797979;
+  }
+  .name {
+    color: #009A61;
+    font-weight: bold;
+  }
+  .info {
+    color: #999999;
+  }
+  .time {
+    font-weight: bold;
+  }
+}
+
+i.like {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: url("../images/like.png");
+  background-size: 12px auto;
+}
+
+.like-info {
+  float: right;
+  color: #009A61;
+}
