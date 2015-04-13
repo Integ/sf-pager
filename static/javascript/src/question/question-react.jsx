@@ -21,14 +21,16 @@ var Question = React.createClass({
         if(id == -1) {
             return;
         }
-        alert(id);
+        var action = this.state.isLiked ? "likeCancel": "like";
+        window.sf.questionAction(action, id);
     },
     handleRankDown: function () {
         var id = this.state.id;
         if(id == -1) {
             return;
         }
-        alert(id);
+        var action = this.state.isHated ? "hateCancel": "hate";
+        window.sf.questionAction(action, id);
     },
     componentDidMount: function () {
         window.showQuestion = function (data) {
@@ -42,7 +44,9 @@ var Question = React.createClass({
                 },
                 "votes": data.votes,
                 "createdDate": data.createdDate,
-                "tags": data.tags
+                "tags": data.tags,
+                "isLiked": data.isLiked,
+                "isHated": data.isHated
             })
         }.bind(this);
 
@@ -55,6 +59,20 @@ var Question = React.createClass({
         window.showAvailableAnswer = function (data) {
             this.setState({
                 answers: data
+            });
+        }.bind(this);
+
+        window.doVoteUp = function () {
+            var vote = this.state.votes + 1;
+            this.setState({
+                votes: vote
+            });
+        }.bind(this);
+
+        window.doVoteDown = function () {
+            var vote = this.state.votes - 1;
+            this.setState({
+                votes: vote
             });
         }.bind(this);
 
@@ -95,8 +113,8 @@ var Question = React.createClass({
                         })}
                     </div>
                     <div className="btn-box">
-                        <a href="javascript:void(0)" onClick={this.handleRankUp}><i className="vote-up" style={{margin: "0 7px 0 3px"}}></i><span>有用</span></a>
-                        <a href="javascript:void(0)" onClick={this.handleRankDown}><i className="vote-down" style={{margin: "0 3px"}}></i></a>
+                        <a href="javascript:void(0)" onClick={this.handleRankUp} className={this.state.isLiked? "active": ""}><i className="vote-up" style={{margin: "0 7px 0 3px"}}></i><span>有用</span></a>
+                        <a href="javascript:void(0)" onClick={this.handleRankDown} className={this.state.isHated? "active": ""}><i className="vote-down" style={{margin: "0 3px"}}></i></a>
                         <span className="comments"> {this.state.votes} </span>
                         <a href="javascript:void(0)" style={{float: "right"}}><i className="ic-comment"></i>{ this.state.comments }</a>
                     </div>
