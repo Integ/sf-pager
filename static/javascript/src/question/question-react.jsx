@@ -1,3 +1,5 @@
+window.q_callback = [];
+window.g_id = 0;
 var Question = React.createClass({
     getInitialState: function () {
         return {
@@ -21,7 +23,12 @@ var Question = React.createClass({
         if(id == -1) {
             return;
         }
-        var action = this.state.isLiked ? "likeCancel": "like";
+        var action;
+        if (this.state.isHated) {
+            action = "hateCancel";
+        } else {
+            action = this.state.isLiked ? "likeCancel": "like";
+        }
         window.sf.questionAction(action, id);
     },
     handleRankDown: function () {
@@ -29,7 +36,12 @@ var Question = React.createClass({
         if(id == -1) {
             return;
         }
-        var action = this.state.isHated ? "hateCancel": "hate";
+        var action;
+        if (this.state.isLiked) {
+            action = "likeCancel";
+        } else {
+            action = this.state.isHated ? "hateCancel": "hate";
+        }
         window.sf.questionAction(action, id);
     },
     componentDidMount: function () {
@@ -64,15 +76,23 @@ var Question = React.createClass({
 
         window.doVoteUp = function () {
             var vote = this.state.votes + 1;
+            var isHated = false;
+            var isLiked = !this.state.isHated;
             this.setState({
-                votes: vote
+                votes: vote,
+                isHated: isHated,
+                isLiked: isLiked
             });
         }.bind(this);
 
         window.doVoteDown = function () {
             var vote = this.state.votes - 1;
+            var isHated = !this.state.isLiked;
+            var isLiked = false;
             this.setState({
-                votes: vote
+                votes: vote,
+                isHated: isHated,
+                isLiked: isLiked
             });
         }.bind(this);
 
