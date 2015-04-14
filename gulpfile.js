@@ -28,6 +28,26 @@ gulp.task("watch", function () {
         });
 });
 
+gulp.task("build", function () {
+    gulp.src("static/less/**/*.less")
+        .pipe(less())
+        .pipe(gulp.dest("static/css"))
+        .on('error', function (err) {
+            console.log(err);
+        });
+
+    gulp.src("static/javascript/src/**/*.jsx")
+        .pipe(react())
+        .pipe(uglify())
+        .pipe(rename({
+            "extname": ".min.js"
+        }))
+        .pipe(gulp.dest("static/javascript/dist"))
+        .on('error', function (err) {
+            console.log(err);
+        });
+});
+
 gulp.task("concat", function() {
     gulp.src(['static/javascript/dist/question/answer-react.min.js',
               'static/javascript/dist/question/tag-react.min.js',
@@ -36,3 +56,5 @@ gulp.task("concat", function() {
         .pipe(concat("question-all.min.js"))
         .pipe(gulp.dest("static/javascript/dist/question"));
 });
+
+gulp.task("product", ['build','concat']);
