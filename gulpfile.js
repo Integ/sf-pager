@@ -50,11 +50,16 @@ gulp.task("build", function () {
 
 gulp.task("concat", function() {
     gulp.src(['static/javascript/dist/question/answer-react.min.js',
-              'static/javascript/dist/question/tag-react.min.js',
+              'static/javascript/dist/tag-react.min.js',
               'static/javascript/dist/question/question-react.min.js',
               'static/javascript/dist/question/question.min.js'])
         .pipe(concat("question-all.min.js"))
         .pipe(gulp.dest("static/javascript/dist/question"));
+
+    gulp.src(['static/javascript/dist/tag-react.min.js',
+              'static/javascript/dist/article/article-react.min.js'])
+        .pipe(concat("article-all.min.js"))
+        .pipe(gulp.dest("static/javascript/dist/article"));
 });
 
 gulp.task("product", ['build','concat']);
