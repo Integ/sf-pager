@@ -1,5 +1,3 @@
-window.q_callback = [];
-window.g_id = 0;
 var Question = React.createClass({
     getInitialState: function () {
         return {
@@ -96,6 +94,11 @@ var Question = React.createClass({
             });
         }.bind(this);
 
+
+        window.triggerAnswerEvent = function(event, e) {
+            $(document).trigger(event, e);
+        }
+
     },
     render: function () {
         var acceptedAnswer = null;
@@ -106,8 +109,10 @@ var Question = React.createClass({
                                      content={accepted.parsedText}
                                      votes={accepted.votes}
                                      comments={accepted.comments}
-                                     author={accepted.author}
+                                     author={accepted.user}
                                      createdDate={accepted.createdDate}
+                                     isLiked={accepted.isLiked}
+                                     isHated={accepted.isHated}
                                      accepted="true" />;
         }
 
@@ -145,8 +150,10 @@ var Question = React.createClass({
                                    content={answer.parsedText}
                                    votes={answer.votes}
                                    comments={answer.comments}
-                                   author={answer.author}
+                                   author={answer.user}
                                    createdDate={answer.createdDate}
+                                   isLiked={answer.isLiked}
+                                   isHated={answer.isHated}
                                    accepted="false" />;
                 })}
             </div>
