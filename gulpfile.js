@@ -60,6 +60,11 @@ gulp.task("concat", function() {
               'static/javascript/dist/article/article-react.min.js'])
         .pipe(concat("article-all.min.js"))
         .pipe(gulp.dest("static/javascript/dist/article"));
+
+    gulp.src(['static/javascript/dist/comment/comment-react.min.js',
+              'static/javascript/dist/comment/comment-list-react.min.js'])
+        .pipe(concat("comment-all.min.js"))
+        .pipe(gulp.dest("static/javascript/dist/comment"));
 });
 
 gulp.task("product", ['build','concat']);

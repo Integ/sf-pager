@@ -1,31 +1,42 @@
-var CommentList = React.createClass({
-    render: function () {
-        return (
-            <ul>
-                <li>
-                    <img src="static/images/default_avatar.png" />
+(function (global, undefined) {
+    var Comment = React.createClass({
+        getInitialState: function () {
+            return {
+                no: this.props.no,
+                id: this.props.id,
+                author: this.props.author,
+                createdDate: this.props.createdDate,
+                votes: this.props.votes,
+                content: this.props.content
+            }
+        },
+        handleClick: function () {
+            window.sf.showMenu(this.state.id, this.state.author.name);
+        },
+        render: function () {
+            return (
+                <li onClick={this.handleClick}>
+                    <img src="static/images/default_avatar.png"/>
+
                     <div className="content">
                         <div className="author">
-                            <span className="no">#1</span>
-                            <span className="name">fenbox</span>
+                            <span className="no">#{this.state.no}</span>
+                            <span className="name">{this.state.author.name}</span>
                             <span className="info">·</span>
-                            <span className="info time">2分钟前</span>
+                            <span className="info time">{this.state.createdDate}</span>
+
                             <div className="like-info">
                                 <i className="like"></i>
-                                <span>0</span>
+                                <span>{this.state.votes}</span>
                             </div>
                         </div>
-                        <div>
-                            对话国外知名技术作者，讲述国内码农精彩人生。你听得见他们，他们也听得见你。
-                        </div>
+                        <div dangerouslySetInnerHTML={{__html: this.state.content}}></div>
                     </div>
                 </li>
-            </ul>
-        );
-    }
-});
+            );
+        }
+    });
 
-React.render(
-    <CommentList />,
-    document.getElementById("main-container")
-)
+    global.Comment = Comment;
+
+})(window);
