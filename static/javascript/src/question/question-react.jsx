@@ -204,8 +204,8 @@
                     </div>
                     <div className="tool-box">
                         <div>
-                            <i className="follow" />
-                            <span>关注</span>
+                             <i className="follow" />
+                             <span>{this.state.followers == 0 ? "" : this.state.followers} 关注</span>
                         </div>
                         <div>
                              <i className="bookmark" />
