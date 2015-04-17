@@ -16,7 +16,7 @@
         render: function () {
             return (
                 <li onClick={this.handleClick}>
-                    <img src={this.author.avatarUrl}/>
+                    <img src={this.state.author.avatarUrl}/>
 
                     <div className="content">
                         <div className="author">
