@@ -14,6 +14,7 @@
             window.sf.showMenu(this.state.id, this.state.author.name, this.state.author.id);
         },
         render: function () {
+            var showVotes = this.state.votes > 0 ? "block" : "hidden";
             return (
                 <li onClick={this.handleClick}>
                     <img src={this.state.author.avatarUrl}/>
@@ -25,7 +26,7 @@
                             <span className="info">·</span>
                             <span className="info time">{this.state.createdDate}</span>
 
-                            <div className="like-info">
+                            <div className={"like-info " + showVotes}>
                                 <i className="like"></i>
                                 <span>{this.state.votes}</span>
                             </div>

@@ -118,19 +118,59 @@
 
         },
         render: function () {
-            var acceptedAnswer = null;
+            var answers;
+            var accepted = this.state.accepted;
 
-            if (this.state.accepted) {
-                var accepted = this.state.accepted;
-                acceptedAnswer = <Answer id={accepted.id}
-                                         content={accepted.parsedText}
-                                         votes={accepted.votes}
-                                         comments={accepted.comments}
-                                         author={accepted.user}
-                                         createdDate={accepted.createdDate}
-                                         isLiked={accepted.isLiked}
-                                         isHated={accepted.isHated}
-                                         accepted="true" />;
+            if (accepted) {
+                answers = (
+                    <div>
+                        <Answer id={accepted.id}
+                             content={accepted.parsedText}
+                             votes={accepted.votes}
+                             comments={accepted.comments}
+                             author={accepted.user}
+                             createdDate={accepted.createdDate}
+                             isLiked={accepted.isLiked}
+                             isHated={accepted.isHated}
+                             accepted="true" />
+                        {this.state.answers.map(function (answer) {
+                            return <Answer id={answer.id}
+                                           content={answer.parsedText}
+                                           votes={answer.votes}
+                                           comments={answer.comments}
+                                           author={answer.user}
+                                           createdDate={answer.createdDate}
+                                           isLiked={answer.isLiked}
+                                           isHated={answer.isHated}
+                                           accepted="false" />;
+                        })}
+                    </div>
+                )
+            } else {
+                if (this.state.answers.length > 0) {
+                    answers = (
+                        <div>
+                            {this.state.answers.map(function (answer) {
+                                return <Answer id={answer.id}
+                                               content={answer.parsedText}
+                                               votes={answer.votes}
+                                               comments={answer.comments}
+                                               author={answer.user}
+                                               createdDate={answer.createdDate}
+                                               isLiked={answer.isLiked}
+                                               isHated={answer.isHated}
+                                               accepted="false" />;
+                            })}
+                        </div>
+                    )
+                } else {
+                    answers = (
+                        <div className="emptyAnswer">
+                            <p>暂时没有人回答</p>
+                            <p>如果你知道答案，赶紧写下吧</p>
+                        </div>
+                    )
+                }
             }
 
             return (
@@ -161,18 +201,7 @@
                             <a href="javascript:void(0)" onClick={this.handleShowComments} style={{float: "right"}}><i className="ic-comment"></i>{ this.state.comments }</a>
                         </div>
                     </div>
-                    {acceptedAnswer}
-                    {this.state.answers.map(function (answer) {
-                        return <Answer id={answer.id}
-                                       content={answer.parsedText}
-                                       votes={answer.votes}
-                                       comments={answer.comments}
-                                       author={answer.user}
-                                       createdDate={answer.createdDate}
-                                       isLiked={answer.isLiked}
-                                       isHated={answer.isHated}
-                                       accepted="false" />;
-                    })}
+                    {answers}
                 </div>
             );
         }

@@ -96,7 +96,7 @@
                         <a href="javascript:void(0)" onClick={this.handleVoteDown}
                            className={this.state.isHated? "active": ""}><i className="vote-down"
                                                                            style={{"margin": "0 3px"}}></i></a>
-                        <span className="comments"> {this.state.votes} </span>
+                        <span className="comments"> {this.state.votes == 0 ? "评论" : this.state.votes} </span>
                         <a href="javascript:void(0)" onClick={this.handleShowComments} style={{"float": "right"}}><i
                             className="ic-comment"></i>{this.state.comments}</a>
                     </div>
