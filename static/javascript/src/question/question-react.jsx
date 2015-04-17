@@ -67,6 +67,7 @@
                     "votes": data.votes,
                     "createdDate": data.createdDate,
                     "tags": data.tags,
+                    "comments": data.comments,
                     "isLiked": data.isLiked,
                     "isHated": data.isHated
                 })

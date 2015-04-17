@@ -11,12 +11,12 @@
             }
         },
         handleClick: function () {
-            window.sf.showMenu(this.state.id, this.state.author.name);
+            window.sf.showMenu(this.state.id, this.state.author.name, this.state.author.id);
         },
         render: function () {
             return (
                 <li onClick={this.handleClick}>
-                    <img src="static/images/default_avatar.png"/>
+                    <img src={this.author.avatarUrl}/>
 
                     <div className="content">
                         <div className="author">
