@@ -72,10 +72,12 @@ nav h4 {
 
 i + span {
   margin-left: 5px;
+  vertical-align: middle;
 }
 
 i {
   vertical-align: middle;
+  display: inline-block;
   &.vote-up {
     height: 0;
     width: 0;
@@ -104,6 +106,20 @@ i {
     height: 17px;
     background: url("../images/accepted.png");
     background-size: 17px auto;
+  }
+
+  &.follow {
+    background-image: url("../images/follow.png");
+    background-size: 16px auto;
+    width: 16px;
+    height: 10px;
+  }
+  
+  &.bookmark{
+    background-image: url("../images/bookmark.png");
+    background-size: 13px auto;
+    width: 13px;
+    height: 15px;
   }
 }
 
@@ -143,7 +159,7 @@ i {
     border-top: none;
   }
 
-  border-top: 1px solid #999;
+  border-top: 1px solid #E2E0E7;
 
   .content {
     font-size: 13px;
@@ -169,6 +185,26 @@ img {
     margin: 0;
   }
 }
+
+.tool-box {
+  background-color: #F7F7F7;
+  border-top: 1px solid #C8C7CC;
+  border-bottom: 1px solid #C8C7CC;
+  div {
+    width: 50%;
+    float: left;
+    text-align: center;
+    padding: 10px 0;
+    color: #888888;
+    vertical-align: middle;
+  }
+  &::after{
+    display: block;
+    content: "";
+    clear:both;
+  }
+}
+
 
 .block {
   display: block;

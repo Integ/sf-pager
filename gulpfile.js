@@ -18,6 +18,7 @@ gulp.task("watch", function () {
     gulp.src("static/javascript/src/**/*.jsx")
         .pipe(watch("static/javascript/src/**/*.jsx"))
         .pipe(react())
+        .pipe(uglify())
         .pipe(rename({
             "extname": ".min.js"
         }))

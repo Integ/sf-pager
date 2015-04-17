@@ -69,7 +69,8 @@
                     "tags": data.tags,
                     "comments": data.comments,
                     "isLiked": data.isLiked,
-                    "isHated": data.isHated
+                    "isHated": data.isHated,
+                    "bookmarks": data.bookmarks
                 })
             }.bind(this);
 
@@ -198,7 +199,17 @@
                             <a href="javascript:void(0)" onClick={this.handleRankUp} className={this.state.isLiked? "active": ""}><i className="vote-up" style={{margin: "0 7px 0 3px"}}></i><span>有用</span></a>
                             <a href="javascript:void(0)" onClick={this.handleRankDown} className={this.state.isHated? "active": ""}><i className="vote-down" style={{margin: "0 3px"}}></i></a>
                             <span className="comments"> {this.state.votes} </span>
-                            <a href="javascript:void(0)" onClick={this.handleShowComments} style={{float: "right"}}><i className="ic-comment"></i>{ this.state.comments }</a>
+                            <a href="javascript:void(0)" onClick={this.handleShowComments} style={{float: "right"}}><i className="ic-comment"></i>{this.state.comments == 0 ? "评论" : this.state.comments}</a>
+                        </div>
+                    </div>
+                    <div className="tool-box">
+                        <div>
+                            <i className="follow" />
+                            <span>关注</span>
+                        </div>
+                        <div>
+                             <i className="bookmark" />
+                             <span>{this.state.bookmarks == 0 ? "" : this.state.bookmarks} 收藏</span>
                         </div>
                     </div>
                     {answers}
