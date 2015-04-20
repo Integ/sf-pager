@@ -118,6 +118,9 @@
             }
 
         },
+        handleArchive: function () {
+            window.sf.archive(this.state.id);
+        },
         render: function () {
             var answers;
             var accepted = this.state.accepted;
@@ -207,7 +210,7 @@
                              <i className="follow" />
                              <span>{this.state.followers == 0 ? "" : this.state.followers} 关注</span>
                         </div>
-                        <div>
+                        <div onClick={this.handleArchive}>
                              <i className="bookmark" />
                              <span>{this.state.bookmarks == 0 ? "" : this.state.bookmarks} 收藏</span>
                         </div>
