@@ -190,6 +190,7 @@ img {
   background-color: #F7F7F7;
   border-top: 1px solid #C8C7CC;
   border-bottom: 1px solid #C8C7CC;
+
   div {
     width: 50%;
     float: left;
@@ -197,12 +198,30 @@ img {
     padding: 10px 0;
     color: #888888;
     vertical-align: middle;
+
+    &.active {
+      color: @primary_green;
+
+      i.follow {
+        background-image: url("../images/follow_active.png");
+        background-size: 16px auto;
+        width: 16px;
+        height: 10px;
+      }
+    }
+
   }
+
   &::after{
     display: block;
     content: "";
     clear:both;
   }
+}
+
+.more {
+  float: right;
+  margin-left: 10px;
 }
 
 

@@ -75,6 +75,15 @@
             }
             global.sf.showComments("answer", id);
         },
+        handleAnswerMore: function () {
+            var id = this.state.id;
+            if(id == -1) {
+                return;
+            }
+            var author = this.state.author;
+            var name = author.name;
+            global.sf.showAnswerMoreDialog(id, name);
+        },
         render: function () {
             var accepted = this.state.accepted == "true" ? 'block' : 'hidden';
             return (
@@ -97,6 +106,9 @@
                            className={this.state.isHated? "active": ""}><i className="vote-down"
                                                                            style={{"margin": "0 3px"}}></i></a>
                         <span className="comments"> {this.state.votes} </span>
+                        <a href="javascript:void(0)" className="more" onClick={this.handleAnswerMore}>
+                            ···
+                        </a>
                         <a href="javascript:void(0)" onClick={this.handleShowComments} style={{"float": "right"}}><i
                             className="ic-comment"></i>{this.state.comments == 0 ? "评论" : this.state.comments}</a>
                     </div>
