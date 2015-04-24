@@ -70,6 +70,7 @@
                     "comments": data.comments,
                     "isLiked": data.isLiked,
                     "isHated": data.isHated,
+                    "isFollowed": data.isFollowed,
                     "bookmarks": data.bookmarks
                 })
             }.bind(this);
@@ -117,9 +118,24 @@
                 $(document).trigger(event, e);
             }
 
+            global.triggerFollow = function (followed) {
+                this.setState({
+                    isFollowed: followed
+                });
+            }.bind(this);
+
         },
         handleArchive: function () {
-            window.sf.archive(this.state.id);
+            global.sf.archive(this.state.id);
+        },
+        handleFollow: function () {
+            var isFollowed = this.state.isFollowed;
+            var id = this.state.id;
+            if (isFollowed) {
+                global.sf.unfollow(id);
+            } else {
+                global.sf.follow(id);
+            }
         },
         render: function () {
             var answers;
@@ -208,13 +224,13 @@
                         </div>
                     </div>
                     <div className="tool-box">
-                        <div>
+                        <div className={this.state.isFollowed ? "active": ""} onClick={this.handleFollow}>
                              <i className="follow" />
-                             <span>{this.state.followers == 0 ? "" : this.state.followers} 关注</span>
+                            {this.state.followers == 0 ? "" : this.state.followers} 关注
                         </div>
                         <div onClick={this.handleArchive}>
                              <i className="bookmark" />
-                             <span>{this.state.bookmarks == 0 ? "" : this.state.bookmarks} 收藏</span>
+                             {this.state.bookmarks == 0 ? "" : this.state.bookmarks} 收藏
                         </div>
                     </div>
                     {answers}
