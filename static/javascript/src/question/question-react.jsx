@@ -71,6 +71,8 @@
                     "isLiked": data.isLiked,
                     "isHated": data.isHated,
                     "isFollowed": data.isFollowed,
+                    "followers": data.followers,
+                    "isBookmarked": data.isBookmarked,
                     "bookmarks": data.bookmarks
                 })
             }.bind(this);
@@ -119,8 +121,11 @@
             }
 
             global.triggerFollow = function (followed) {
+                var followers = this.state.followers;
+                followers += followed ? 1 : -1;
                 this.setState({
-                    isFollowed: followed
+                    isFollowed: followed,
+                    followers: followers
                 });
             }.bind(this);
 
@@ -215,7 +220,7 @@
                             })}
                         </div>
                         <div className="btn-box">
-                            <a href="javascript:void(0)" onClick={this.handleRankUp} className={this.state.isLiked? "active": ""}><i className="vote-up" style={{margin: "0 7px 0 3px"}}></i><span>有用</span></a>
+                            <a href="javascript:void(0)" onClick={this.handleRankUp} className={this.state.isLiked? "active": ""}><i className="vote-up" style={{margin: "-2px 7px 0 3px"}}></i><span>有用</span></a>
                             <a href="javascript:void(0)" onClick={this.handleRankDown} className={this.state.isHated? "active": ""}><i className="vote-down" style={{margin: "0 3px"}}></i></a>
                             <span className="comments"> {this.state.votes} </span>
                             <a href="javascript:void(0)" onClick={this.handleShowComments} style={{float: "right"}}>
@@ -228,7 +233,7 @@
                              <i className="follow" />
                             {this.state.followers == 0 ? "" : this.state.followers} 关注
                         </div>
-                        <div onClick={this.handleArchive}>
+                        <div className={this.state.isBookmarked ? "active": ""} onClick={this.handleArchive}>
                              <i className="bookmark" />
                              {this.state.bookmarks == 0 ? "" : this.state.bookmarks} 收藏
                         </div>
