@@ -14,7 +14,7 @@
                 },
                 "votes": 0,
                 "createdDate": "刚刚",
-                "tags": [{"id":"123", "name":"123"}],
+                "tags": [],
                 "accepted": undefined,
                 "answers": [],
                 "comments": 0
