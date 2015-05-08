@@ -13,6 +13,7 @@
                 "startWeek": "加载中",
                 "endWeek": "加载中",
                 "address": "加载中",
+                "signEndDate": "1970-01-01 00:00:00",
                 "sponsorsList" : [['加载中']],
                 "parsedText" : '加载中'
             }
@@ -31,13 +32,27 @@
                     "endDate": data.endDate,
                     "startWeek": data.startWeek,
                     "endWeek": data.endWeek,
+                    "signEndDate": data.signEndDate,
                     "sponsorsList": data.sponsorsList,
                     "parsedText": data.parsedText
                 })
             }.bind(this);
 
         },
+        componentDidUpdate: function () {
+            var date = $('#countdown').data("end");
+            $('#countdown').countdown(date, function (event) {
+                var date = event.offset.totalDays;
+                var hours = event.offset.hours;
+                var minutes = event.offset.minutes;
+                var seconds = event.offset.seconds;
 
+                $('.time-date').text(date);
+                $('.time-hour').text(hours);
+                $('.time-minute').text(minutes);
+                $('.time-second').text(seconds);
+            });
+        },
         render: function () {
             return (
                 <div className="activity-main">
@@ -66,11 +81,11 @@
                                 </tr>
                                 <tr>
                                     <td className="info-label">报名截止：</td>
-                                    <td>
-                                        <strong className="activity-time time-date">44</strong>天
-                                        <strong className="activity-time time-hour">44</strong>时 
-                                        <strong className="activity-time time-minute">44</strong>分 
-                                        <strong className="activity-time time-second">44</strong>秒
+                                    <td id="countdown" data-end={this.state.signEndDate}>
+                                        <strong className="activity-time time-date">0</strong>天
+                                        <strong className="activity-time time-hour">0</strong>时
+                                        <strong className="activity-time time-minute">0</strong>分
+                                        <strong className="activity-time time-second">0</strong>秒
                                     </td>
                                 </tr>
                             </tbody>
