@@ -21,7 +21,7 @@
             global.showAcitity = function (data) {
                 this.setState({
                     "id": data.id,
-                    "title": data.title,
+                    "title": data.title
                 })
             }.bind(this);
 

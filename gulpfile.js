@@ -53,6 +53,11 @@ gulp.task("concat", function() {
               'static/javascript/dist/comment/comment-list-react.min.js'])
         .pipe(concat("comment-all.min.js"))
         .pipe(gulp.dest("static/javascript/dist/comment"));
+
+    gulp.src(['static/javascript/dist/activity/activity-react.min.js',
+        'static/javascript/dist/activity/activity.min.js'])
+        .pipe(concat("activity-all.min.js"))
+        .pipe(gulp.dest("static/javascript/dist/activity"));
 });
 
 gulp.task("product", ['build','concat']);
