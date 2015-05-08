@@ -77,7 +77,11 @@
                                 </tr>
                                 <tr>
                                     <td className="info-label green-text">主办方：</td>
-                                    <td className="green-text">{this.state.sponsorsList[0][0]}</td>
+                                    <td className="green-text">{
+                                        this.state.sponsorsList.forEach(function (sponsor) {
+                                            return sponsor[0];
+                                        })
+                                    }</td>
                                 </tr>
                                 <tr>
                                     <td className="info-label">报名截止：</td>
