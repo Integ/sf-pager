@@ -4,7 +4,7 @@ React.render(
 );
 
 $(document).ready(function () {
-   $('.content').on("click", "img", function () {
+   $('.main-container').on("click", "img", function () {
        var src = $(this).attr("src");
        window.sf.viewImage(src);
    });
