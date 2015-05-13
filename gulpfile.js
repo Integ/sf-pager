@@ -37,22 +37,27 @@ gulp.task("build", function () {
 });
 
 gulp.task("concat", function() {
-    gulp.src(['static/javascript/dist/question/answer-react.min.js',
-              'static/javascript/dist/tag-react.min.js',
-              'static/javascript/dist/question/question-react.min.js',
-              'static/javascript/dist/question/question.min.js'])
+    gulp.src(['static/javascript/src/question/answer-react.jsx',
+              'static/javascript/src/tag-react.jsx',
+              'static/javascript/src/question/question-react.jsx',
+              'static/javascript/src/question/question.jsx'])
+        .pipe(react())
         .pipe(concat("question-all.min.js"))
+        .pipe(uglify())
         .pipe(gulp.dest("static/javascript/dist/question"));
 
-    gulp.src(['static/javascript/dist/tag-react.min.js',
-              'static/javascript/dist/article/article-react.min.js'])
+
+    gulp.src(['static/javascript/src/tag-react.jsx',
+              'static/javascript/src/article/article-react.jsx'])
+        .pipe(react())
         .pipe(concat("article-all.min.js"))
+        .pipe(uglify())
         .pipe(gulp.dest("static/javascript/dist/article"));
 
-    gulp.src(['static/javascript/dist/comment/comment-react.min.js',
-              'static/javascript/dist/comment/comment-list-react.min.js'])
+    gulp.src(['static/javascript/src/comment/comment-react.jsx',
+              'static/javascript/src/comment/comment-list-react.jsx'])
+        .pipe(react())
         .pipe(concat("comment-all.min.js"))
+        .pipe(uglify())
         .pipe(gulp.dest("static/javascript/dist/comment"));
 });
-
-gulp.task("product", ['build','concat']);
