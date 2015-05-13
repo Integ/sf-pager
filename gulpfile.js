@@ -60,4 +60,12 @@ gulp.task("concat", function() {
         .pipe(concat("comment-all.min.js"))
         .pipe(uglify())
         .pipe(gulp.dest("static/javascript/dist/comment"));
+
+
+    gulp.src(['static/javascript/src/activity/activity-react.jsx',
+        'static/javascript/src/activity/activity.jsx'])
+        .pipe(react())
+        .pipe(concat("activity-all.min.js"))
+        .pipe(uglify())
+        .pipe(gulp.dest("static/javascript/dist/activity"));
 });
