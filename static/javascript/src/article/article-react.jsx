@@ -23,6 +23,9 @@
                 });
             }.bind(this);
         },
+        componentDidUpdate: function() {
+            hljs.initHighlighting();
+        },
         render: function () {
             return (
                 <div>

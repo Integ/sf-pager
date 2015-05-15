@@ -53,6 +53,9 @@
             }
             global.sf.showComments("question", id);
         },
+        componentDidUpdate: function() {
+            hljs.initHighlighting();
+        },
         componentDidMount: function () {
             // 显示问题
             global.showQuestion = function (data) {
