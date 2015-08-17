@@ -95,7 +95,7 @@
             var accepted = this.state.accepted == "true" ? 'block' : 'hidden';
             return (
                 <div className="comment">
-                    <div className="author">
+                    <div className="author" onClick={this.viewAuthor}>
                         <div className="name">{this.state.author.name}</div>
                         <div className="rank">{this.state.author.rank}</div>
                         <div className="info">·</div>

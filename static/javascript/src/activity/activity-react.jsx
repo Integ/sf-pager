@@ -73,6 +73,10 @@
                         <table>
                             <tbody>
                                 <tr>
+                                    <td className="info-label green-text">主办方：</td>
+                                    <td className="green-text">{this.state.sponsorsList}</td>
+                                </tr>
+                                <tr>
                                     <td width="70" className="info-label">开始时间：</td>
                                     <td>{this.state.startDate} {this.state.startWeek}</td>
                                 </tr>
@@ -80,14 +84,7 @@
                                     <td className="info-label">结束时间：</td>
                                     <td>{this.state.endDate} {this.state.endWeek}</td>
                                 </tr>
-                                <tr>
-                                    <td className="info-label">举办地点：</td>
-                                    <td className="green-text">{this.state.address}</td>
-                                </tr>
-                                <tr>
-                                    <td className="info-label green-text">主办方：</td>
-                                    <td className="green-text">{this.state.sponsorsList}</td>
-                                </tr>
+
                                 <tr>
                                     <td className="info-label">报名截止：</td>
                                     <td id="countdown" data-end={this.state.signEndDate}>
@@ -96,6 +93,10 @@
                                         <strong className="activity-time time-minute">0</strong>分
                                         <strong className="activity-time time-second">0</strong>秒
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td className="info-label location-key">举办地点：</td>
+                                    <td className="green-text" >{this.state.address}</td>
                                 </tr>
                             </tbody>
                         </table>
