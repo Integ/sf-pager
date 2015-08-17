@@ -5,12 +5,20 @@
                 title: "加载中",
                 author: {
                     name: "Author",
-                    rank: 0
+                    rank: 0,
+                    id: -1
                 },
                 createdDate: "刚刚",
                 content: "<p>加载中</p>",
                 tags: []
             }
+        },
+        viewAuthor: function() {
+            var authorId = this.state.author.id;
+            if (authorId == -1) {
+                return;
+            }
+            global.sf.viewAuthor(authorId);
         },
         componentDidMount: function () {
             global.showArticle = function (data) {
@@ -33,7 +41,7 @@
                         <h4>
                             {this.state.title}
                         </h4>
-                        <div className="author">
+                        <div className="author" onClick={this.viewAuthor}>
                             <span className="name">{this.state.author.name}</span>
                             <span className="rank">{this.state.author.rank}</span>
                             <span className="info">·</span>

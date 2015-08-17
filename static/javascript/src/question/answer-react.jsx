@@ -68,6 +68,13 @@
 
             global.sf.answerAction(action, id, event);
         },
+        viewAuthor: function() {
+            var authorId = this.state.author.id;
+            if (authorId == -1) {
+                return;
+            }
+            global.sf.viewAuthor(authorId);
+        },
         handleShowComments: function () {
             var id = this.state.id;
             if (id == -1) {

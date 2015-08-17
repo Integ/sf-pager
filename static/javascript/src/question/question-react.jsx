@@ -10,7 +10,8 @@
                 "content": "加载中...",
                 "author": {
                     "name": "Author",
-                    "rank": 0
+                    "rank": 0,
+                    "id": -1
                 },
                 "votes": 0,
                 "createdDate": "刚刚",
@@ -63,10 +64,7 @@
                     "id": data.id,
                     "title": data.title,
                     "content": data.parsedText,
-                    "author": {
-                        "name": data.user.name,
-                        "rank": data.user.rank
-                    },
+                    "author": data.user,
                     "votes": data.votes,
                     "createdDate": data.createdDate,
                     "tags": data.tags,
@@ -145,6 +143,13 @@
                 global.sf.follow(id);
             }
         },
+        viewAuthor: function() {
+            var authorId = this.state.author.id;
+            if (authorId == -1) {
+                return;
+            }
+            global.sf.viewAuthor(authorId);
+        },
         render: function () {
             var answers;
             var accepted = this.state.accepted;
@@ -207,7 +212,7 @@
                         <h4>
                             {this.state.title}
                         </h4>
-                        <div className="author">
+                        <div className="author" onClick={this.viewAuthor}>
                             <span className="name">{this.state.author.name}</span>
                             <span className="rank">{this.state.author.rank}</span>
                             <span className="info">·</span>

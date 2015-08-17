@@ -31,14 +31,12 @@
                 });
                 sponsors = sponsors.join(",");
 
-                thumbUrl = data.bannerUrl.replace("medium", "big");
-
                 this.setState({
                     "id": data.id,
                     "name": data.name,
                     "title": data.title,
-                    "address": data.cityName,
-                    "thumbUrl": thumbUrl,
+                    "address": data.address,
+                    "thumbUrl": data.bigBannerUrl,
                     "startDate": data.startDate,
                     "endDate": data.endDate,
                     "startWeek": data.startWeek,
