@@ -12,6 +12,7 @@
                 "endDate": "加载中",
                 "startWeek": "加载中",
                 "endWeek": "加载中",
+                "cityName": "",
                 "address": "加载中",
                 "signEndDate": "1970-01-01 00:00:00",
                 "sponsorsList" : '加载中',
@@ -35,6 +36,7 @@
                     "id": data.id,
                     "name": data.name,
                     "title": data.title,
+                    "cityName": data.cityName,
                     "address": data.address,
                     "thumbUrl": data.bigBannerUrl,
                     "startDate": data.startDate,
@@ -96,7 +98,11 @@
                                 </tr>
                                 <tr>
                                     <td className="info-label location-key">举办地点：</td>
-                                    <td className="green-text" >{this.state.address}</td>
+                                    <td className="green-text" >
+                                        <a href={"http://api.map.baidu.com/geocoder?output=html&address=" + this.state.cityName + " " + this.state.address}>
+                                            {this.state.cityName + " " + this.state.address}
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
