@@ -1,6 +1,8 @@
 node_modules
 *.iml
 .idea
+.DS_Store
+
 
 static/javascript/dist
 static/css

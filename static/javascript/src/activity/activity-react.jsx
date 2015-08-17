@@ -14,7 +14,7 @@
                 "endWeek": "加载中",
                 "address": "加载中",
                 "signEndDate": "1970-01-01 00:00:00",
-                "sponsorsList" : [['加载中']],
+                "sponsorsList" : '加载中',
                 "parsedText" : '加载中'
             }
         },
@@ -22,6 +22,13 @@
         componentDidMount: function () {
             // 显示活动
             global.showActivity = function (data) {
+                var sponsorsList = data.sponsorsList;
+                var sponsors = [];
+                sponsorsList.map(function (e) {
+                    sponsors.push(e[0]);
+                });
+                sponsors = sponsors.join(",");
+
                 this.setState({
                     "id": data.id,
                     "name": data.name,
@@ -33,7 +40,7 @@
                     "startWeek": data.startWeek,
                     "endWeek": data.endWeek,
                     "signEndDate": data.signEndDate,
-                    "sponsorsList": data.sponsorsList,
+                    "sponsorsList": sponsors,
                     "parsedText": data.parsedText
                 })
             }.bind(this);
@@ -77,11 +84,7 @@
                                 </tr>
                                 <tr>
                                     <td className="info-label green-text">主办方：</td>
-                                    <td className="green-text">{
-                                        this.state.sponsorsList.forEach(function (sponsor) {
-                                            return sponsor[0];
-                                        })
-                                    }</td>
+                                    <td className="green-text">{this.state.sponsorsList}</td>
                                 </tr>
                                 <tr>
                                     <td className="info-label">报名截止：</td>
