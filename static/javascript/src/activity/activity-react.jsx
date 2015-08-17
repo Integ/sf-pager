@@ -95,7 +95,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div className="activity-intro"
+                    <div className="activity-intro fmt"
                          dangerouslySetInnerHTML={{__html: this.state.parsedText }}>
                     </div>
                 </div>

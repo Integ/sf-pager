@@ -40,7 +40,7 @@
                             <span className="info">{this.state.createdDate}</span>
                         </div>
                     </nav>
-                    <div className="content-container">
+                    <div className="content-container fmt">
                         <article className="content" dangerouslySetInnerHTML={{__html: this.state.content}}>
                         </article>
                         <div className="tags">
