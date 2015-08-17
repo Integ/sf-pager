@@ -22,19 +22,23 @@
         componentDidMount: function () {
             // 显示活动
             global.showActivity = function (data) {
-                var sponsorsList = data.sponsorsList;
-                var sponsors = [];
-                sponsorsList.map(function (e) {
+                var sponsors = [],
+                    thumbUrl;
+
+
+                data.sponsorsList.map(function (e) {
                     sponsors.push(e[0]);
                 });
                 sponsors = sponsors.join(",");
+
+                thumbUrl = data.bannerUrl.replace("medium", "big");
 
                 this.setState({
                     "id": data.id,
                     "name": data.name,
                     "title": data.title,
                     "address": data.cityName,
-                    "thumbUrl": data.bannerUrl,
+                    "thumbUrl": thumbUrl,
                     "startDate": data.startDate,
                     "endDate": data.endDate,
                     "startWeek": data.startWeek,
@@ -63,7 +67,7 @@
         render: function () {
             return (
                 <div className="activity-main">
-                    <div className="activity-thumb">
+                    <div className="activity-thumb" style={{ display: this.state.thumbUrl ? "block": "none"}}>
                         <img src={this.state.thumbUrl} />
                     </div>
                     <div className="activity-info">
