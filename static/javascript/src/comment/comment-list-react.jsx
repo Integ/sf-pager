@@ -6,11 +6,18 @@
             }
         },
         componentDidMount: function () {
-            global.showComments = function (data) {
+            global.showComments = function (data, anchor) {
                 this.setState({
-                    comments: data
+                    comments: data,
+                    anchor: null
                 });
             }.bind(this);
+        },
+        componentDidUpdate: function () {
+            var anchor = this.state.anchor;
+            if (anchor) {
+                document.getElementById(anchor).scrollIntoView();
+            }
         },
         render: function () {
             return (

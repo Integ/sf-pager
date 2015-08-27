@@ -18,7 +18,8 @@
                 "tags": [],
                 "accepted": undefined,
                 "answers": [],
-                "comments": 0
+                "comments": 0,
+                "anchor": []
             }
         },
         handleRankUp: function () {
@@ -56,10 +57,14 @@
         },
         componentDidUpdate: function() {
             hljs.initHighlighting();
+            var anchor = this.state.anchor;
+            if (anchor) {
+               document.getElementById(anchor).scrollIntoView();
+            }
         },
         componentDidMount: function () {
             // 显示问题
-            global.showQuestion = function (data) {
+            global.showQuestion = function (data, anchor) {
                 this.setState({
                     "id": data.id,
                     "title": data.title,
@@ -74,7 +79,8 @@
                     "isFollowed": data.isFollowed,
                     "followers": data.followers,
                     "isBookmarked": data.isBookmarked,
-                    "bookmarks": data.bookmarks
+                    "bookmarks": data.bookmarks,
+                    "anchor": anchor
                 })
             }.bind(this);
 
