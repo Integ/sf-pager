@@ -16,7 +16,7 @@
         render: function () {
             var showVotes = this.state.votes > 0 ? "block" : "hidden";
             return (
-                <li onClick={this.handleClick}>
+                <li onClick={this.handleClick} id={this.state.id}>
                     <img src={this.state.author.avatarUrl}/>
 
                     <div className="content">
