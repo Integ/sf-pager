@@ -215,8 +215,7 @@
             return (
                 <div>
                     <nav>
-                        <h4>
-                            {this.state.title}
+                        <h4 dangerouslySetInnerHTML={{__html: this.state.title}}>
                         </h4>
                         <div className="author" onClick={this.viewAuthor}>
                             <span className="name">{this.state.author.name}</span>
