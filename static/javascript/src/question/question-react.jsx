@@ -99,8 +99,7 @@
             }.bind(this);
 
             // 增加投票
-            global.doVoteUp = function () {
-                var vote = this.state.votes + 1;
+            global.doVoteUp = function (vote) {
                 var isHated = false;
                 var isLiked = !this.state.isHated;
                 this.setState({
@@ -111,8 +110,7 @@
             }.bind(this);
 
             // 减少投票
-            global.doVoteDown = function () {
-                var vote = this.state.votes - 1;
+            global.doVoteDown = function (vote) {
                 var isHated = !this.state.isLiked;
                 var isLiked = false;
                 this.setState({
