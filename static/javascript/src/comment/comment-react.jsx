@@ -11,7 +11,9 @@
             }
         },
         handleClick: function () {
-            window.sf.showMenu(this.state.id, this.state.author.name, this.state.author.id);
+            var id = this.state.id + "";
+            var authorId = this.state.author.id + "";
+            window.sf.showMenu(id, this.state.author.name, authorId);
         },
         render: function () {
             var showVotes = this.state.votes > 0 ? "block" : "hidden";

@@ -47,6 +47,7 @@
             } else {
                 action = this.state.isLiked ? "likeCancel" : "like";
             }
+            id += "";
             var event = "comment-" + id + (gid++);
             $(document).one(event, voteChange.bind(this));
             global.sf.answerAction(action, id, event);
@@ -62,7 +63,7 @@
             } else {
                 action = this.state.isHated ? "hateCancel" : "hate";
             }
-
+            id += "";
             var event = "comment-" + id + (gid++);
             $(document).one(event, voteChange.bind(this));
 
@@ -73,6 +74,7 @@
             if (authorId == -1) {
                 return;
             }
+            authorId += "";
             global.sf.viewAuthor(authorId);
         },
         handleShowComments: function () {
@@ -80,6 +82,7 @@
             if (id == -1) {
                 return;
             }
+            id += "";
             global.sf.showComments("answer", id);
         },
         handleAnswerMore: function () {
@@ -89,6 +92,7 @@
             }
             var author = this.state.author;
             var name = author.name;
+            id += "";
             global.sf.showAnswerMoreDialog(id, name);
         },
         render: function () {

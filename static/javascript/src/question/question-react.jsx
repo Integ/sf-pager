@@ -33,6 +33,7 @@
             } else {
                 action = this.state.isLiked ? "likeCancel": "like";
             }
+            id += "";
             global.sf.questionAction(action, id);
         },
         handleRankDown: function () {
@@ -46,6 +47,7 @@
             } else {
                 action = this.state.isHated ? "hateCancel": "hate";
             }
+            id += "";
             global.sf.questionAction(action, id);
         },
         handleShowComments: function () {
@@ -53,6 +55,7 @@
             if(id == -1) {
                 return;
             }
+            id += "";
             global.sf.showComments("question", id);
         },
         componentDidUpdate: function() {
@@ -66,7 +69,7 @@
             // 显示问题
             global.showQuestion = function (data, anchor) {
                 this.setState({
-                    "id": data.id,
+                    "id": data.id + "",
                     "title": data.title,
                     "content": data.parsedText,
                     "author": data.user,
@@ -86,6 +89,7 @@
 
             // 显示已经被接受的答案
             global.showAcceptedAnswer = function (data) {
+                data.id = data.id + "";
                 this.setState({
                     accepted: data
                 });
@@ -93,6 +97,7 @@
 
             // 显示还没有被接受的答案
             global.showAvailableAnswer = function (data) {
+                data.id = data.id + "";
                 this.setState({
                     answers: data
                 });
@@ -152,6 +157,7 @@
             if (authorId == -1) {
                 return;
             }
+            authorId += "";
             global.sf.viewAuthor(authorId);
         },
         render: function () {

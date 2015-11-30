@@ -18,6 +18,7 @@
             if (authorId == -1) {
                 return;
             }
+            authorId += "";
             global.sf.viewAuthor(authorId);
         },
         componentDidMount: function () {

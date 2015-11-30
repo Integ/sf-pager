@@ -4,7 +4,7 @@
     }
     var Tag = React.createClass({
         view: function () {
-            window.sf.viewTag(this.props.id);
+            window.sf.viewTag(this.props.id + "");
         },
         render: function () {
             return (
