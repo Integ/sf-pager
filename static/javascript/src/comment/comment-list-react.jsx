@@ -26,6 +26,7 @@
                         return  <Comment no={i}
                                          id={comment.id}
                                          author={comment.user}
+                                         replyUser ={comment.replyUser}
                                          createdDate={comment.createdDate}
                                          votes={comment.votes}
                                          content={comment.parsedText} />

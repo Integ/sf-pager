@@ -7,7 +7,8 @@
                 author: this.props.author,
                 createdDate: this.props.createdDate,
                 votes: this.props.votes,
-                content: this.props.content
+                content: this.props.content,
+                replyUser: this.props.replyUser
             }
         },
         handleClick: function () {
@@ -32,6 +33,9 @@
                                 <i className="like"></i>
                                 <span>{this.state.votes}</span>
                             </div>
+                        </div>
+                        <div className="reply">
+                            {this.state.replyUser == null ? "" : "回复 " + this.state.replyUser.name + "：" }
                         </div>
                         <div dangerouslySetInnerHTML={{__html: this.state.content}}></div>
                     </div>
