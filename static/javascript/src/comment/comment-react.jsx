@@ -37,7 +37,7 @@
                         <div className="reply">
                             {this.state.replyUser == null ? "" : "回复 " + this.state.replyUser.name + "：" }
                         </div>
-                        <div dangerouslySetInnerHTML={{__html: this.state.content}}></div>
+                        <div className="markdown" dangerouslySetInnerHTML={{__html: this.state.content}}></div>
                     </div>
                 </li>
             );
