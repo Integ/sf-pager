@@ -19,7 +19,7 @@
         render: function () {
             var showVotes = this.state.votes > 0 ? "block" : "hidden";
             return (
-                <li onClick={this.handleClick} id={this.state.id}>
+                <li id={this.state.id}>
                     <img className="avatar" src={this.state.author.avatarUrl}/>
 
                     <div className="content">
@@ -37,7 +37,7 @@
                         <div className="reply">
                             {this.state.replyUser == null ? "" : "回复 " + this.state.replyUser.name + "：" }
                         </div>
-                        <div className="markdown" dangerouslySetInnerHTML={{__html: this.state.content}}></div>
+                        <div className="markdown" onClick={this.handleClick} dangerouslySetInnerHTML={{__html: this.state.content}}></div>
                     </div>
                 </li>
             );
