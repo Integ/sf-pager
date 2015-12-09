@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+@primary_green: #009A61;
+
+html {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, STHeiti, "Microsoft Yahei", sans-serif;
+}
+
+* {
+  margin: 0;
+}
+
+nav {
+  background-color: #324148;
+  padding: 1px 15px 10px 15px;
+}
+
+nav h4 {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.author * {
+  display: inline-block;
+  font-size: 13px;
+  margin: 0 3px;
+}
+
+.author .name {
+  color: @primary_green;
+  margin-left: 0;
+}
+
+.author .rank {
+  font-weight: 700;
+}
+
+.info {
+  color: #999999;
+}
+
+.content-container {
+  padding: 18px;
+  font-size: 15px;
+}
+
+.content, .comment {
+  word-break: break-all;
+}
+
+.tags * {
+  margin: 0 3px;
+}
+
+.tags a {
+  padding: 0 5px;
+  font-size: 12px;
+  background-color: #324148;
+  display: inline-block;
+  color: #017E66;
+}
+
+.btn-box {
+  margin-top: 10px;
+}
+
+.btn-box a {
+  vertical-align: middle;
+  display: inline-block;
+  padding: 0 5px;
+  background-color: #324148;
+  color: #999999;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+i + span {
+  margin-left: 5px;
+}
+
+img {
+  max-width: 100%;
+}
