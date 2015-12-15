@@ -23,6 +23,10 @@
         },
         componentDidMount: function () {
             global.showArticle = function (data) {
+                if (typeof data == "string") {
+                    data = JSON.parse(data);
+                }
+
                 this.setState({
                     title: data.title,
                     author: data.user,
