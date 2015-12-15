@@ -68,6 +68,10 @@
         componentDidMount: function () {
             // 显示问题
             global.showQuestion = function (data, anchor) {
+                if (typeof data == "string") {
+                    data = JSON.parse(data);
+                }
+
                 this.setState({
                     "id": data.id + "",
                     "title": data.title,
@@ -89,6 +93,10 @@
 
             // 显示已经被接受的答案
             global.showAcceptedAnswer = function (data) {
+                if (typeof data == "string") {
+                    data = JSON.parse(data);
+                }
+
                 data.id = data.id + "";
                 this.setState({
                     accepted: data
@@ -97,6 +105,11 @@
 
             // 显示还没有被接受的答案
             global.showAvailableAnswer = function (data) {
+                if (typeof data == "string") {
+                    data = JSON.parse(data);
+                }
+
+
                 data.id = data.id + "";
                 this.setState({
                     answers: data
